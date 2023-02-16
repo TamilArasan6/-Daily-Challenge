@@ -1,0 +1,45 @@
+Question:
+The program must accept two integers X and Y as the input. The program must swap the last two digits of X with the last two digits of Y.
+Then the program must print their product as the output.
+Boundary Condition(s):
+10 <= X, Y <= 10^4
+Input Format:
+The first line contains X and Y separated by space.
+Output Format:
+The first line contains the product as per the given condition.
+Example Input/Output 1:
+Input:
+34 123
+Output:
+3082
+Explanation:
+The last two digits in both integers are swapped to get 23 and 134.
+The product of the modified integers is 23 * 134 = 3082
+Example Input/Output 2:
+Input:
+5323 1295
+Output:
+6598085
+Max Execution Time Limit: 4000 millisecs
+
+
+code:
+
+import java.util.*;
+public class Main {
+
+    public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int a=sc.nextInt();
+		int b=sc.nextInt();
+		int s1=a%100;
+		int s2=b%100;
+		a=a/100;
+		b=b/100;
+		a*=100;
+		b*=100;
+		a+=s2;
+		b+=s1;
+		System.out.print(a*b);
+	}
+}

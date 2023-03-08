@@ -1,0 +1,112 @@
+Question
+
+The runs scored by two cricket players is passed as input. The program must print the total runs scored by the better player. 
+The better player is the player with a higher average. It is not necessary that both the players have played/scored in the same number of matches. 
+If both the players have same average, then print the runs scored by the player who has the highest total runs. 
+Boundary Conditions: - The number of matches played for any player will not exceed 20. - 
+If a negative value is passed as runs scored, then the program output must be INVALIDINPUT. 
+Input Format: First line will contain the runs scored by player one. The scores are separated by one or more spaces. 
+Second line will contain the runs scored by player two. The scores are separated by one or more spaces. 
+Output Format: The first line will contain the total runs scored by the player having higher average. 
+Sample Input/Output: 
+Example 1: Input: 20 30 40 50 10 
+Output: 90 
+Explanation: Both the players have same average 30. 
+Hence the output is the highest total runs which is by player 1. (20+30+40 = 90)
+
+Input Format
+
+numbers
+
+Constraints
+
+-
+
+Output Format
+numbers
+
+Sample Input 0
+20 30 40
+50 10
+Sample Output 0
+90
+
+Sample Input 1
+50 60 10
+50 40
+Sample Output 1
+90
+
+Sample Input 2
+40 42 60
+0 100 56    
+Sample Output 2
+156
+
+Sample Input 3
+42 -10
+22 45
+Sample Output 3
+INVALIDINPUT
+
+
+output:
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+    char p1[200];
+    char p2[200];
+    scanf("%[^\n]%*c",p1);
+    scanf("%[^\n]",p2);
+    char *str1=strtok(p1," ");
+    int c1=0,c2=0,sum1=0,sum2=0,f=0;
+    while(str1!=NULL)
+    {
+        int x=atoi(str1);
+        if(x<0)
+        {
+            f=1;
+            break;
+        }
+        sum1+=x;
+        c1++;
+        str1=strtok(NULL," ");
+    }
+    char *str2=strtok(p2," ");
+    while(str2!=NULL)
+    {
+        int x=atoi(str2);
+        if(x<0)
+        {
+            f=1;
+            break;
+        }
+        sum2+=x;
+        c2++;
+        str2=strtok(NULL," ");
+    }
+    int avg1=sum1/c1;
+    int avg2=sum2/c2;
+    if(f==1)
+    {
+        printf("INVALIDINPUT");
+    }
+    else if(avg1>avg2)
+    {
+        printf("%d",sum1);
+    }
+    else if(avg2>avg1)
+    {
+        printf("%d",sum2);
+    }
+    else
+    {
+        int c=(sum1>sum2)?sum1:sum2;
+        printf("%d",c);
+    }
+}
+
+    

@@ -1,0 +1,57 @@
+Question:
+
+The program must accept an alphabet CH as the input. The program must print all
+the consonants from CH circularly as the output.
+Note: CH is always in lowercase.
+Boundary Condition(s):
+'a' <= CH <= 'z'
+Input Format:
+The first line contains CH.
+Output Format:
+The first line contains all the consonants in lowercase from CH circularly.
+
+Example Input/Output 1:
+Input:
+w
+Output:
+wxyzbcdfghjklmnpqrstv
+Explanation:
+All the lowercase consonants are printed circularly starting from the given alphabet w
+
+Example Input/Output 2:
+Input:
+e
+Output:
+fghjklmnpqrstvwxyzbcd
+
+
+Code:
+
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        char ch=sc.next().charAt(0);
+        String str="";
+        char o=ch;
+        str+=ch;
+        if(ch=='z')
+            ch='a';
+        else
+            ch++;
+        while(ch!=o)
+        {
+            str+=ch;
+            if(ch=='z')
+            {
+                ch='a';
+            }
+            else 
+            {
+            ch++;
+            }
+        }
+        str=str.replaceAll("[aeiou]","");
+        System.out.println(str);
+	}
+}
